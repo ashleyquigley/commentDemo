@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script data-require="jquery@2.1.1" data-semver="1.9.1" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+    <style>body{ background: #F9F9FA; }
+	.focus{background: #F0F0F0;}
+	</style>
+  </head>
+
+      <body>  
+           <br /><br />  
+           <div class="container" style="width:500px;">  
+                <h3 align="center">Add Your Comment Below</h3>  
+                <div ng-app="myapp" ng-controller="usercontroller">   
+                     <input type="textarea" name="forum" id="forum" ng-model="comment" ng-keydown="checkKeyDown2($event)" ng-change="complete(comment)" ng-blur="resetBox()" ng-click="userMovedPosition()" class="form-control" />  
+                     <ul class="list-group" ng-model="hidethis" ng-hide="hidethis">  
+                          <li class="list-group-item" ng-repeat="person in filterNames | orderBy: 'name' track by $index" ng-click="fillTextbox(person.name)" style="cursor:pointer;" ng-class="{'focus': focusedIndex == $index}" >
+						  <img src="{{person.avatar_url}}" width="30px;"/>
+						  {{person.name}} <span style="color:lightgrey;">{{person.username}}</span>
+						  </li>
+                     </ul>  
+							 
+                </div>  
+           </div>  
+		   
+
+      </body> 
+</html>
