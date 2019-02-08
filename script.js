@@ -37,7 +37,7 @@ var app = angular.module("myapp",[]);
 					output.push(person);  
 				}  
 			});  
-			$scope.filterNames = output;    
+			$scope.filterNames = $filter('orderBy')(output, 'name');  
 		}  
 	};  
 	
