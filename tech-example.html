@@ -17,7 +17,7 @@
                 <div ng-app="myapp" ng-controller="usercontroller">   
                      <input type="textarea" name="forum" id="forum" ng-model="comment" ng-keydown="checkKeyDown2($event)" ng-change="complete(comment)" ng-blur="resetBox()" ng-click="userMovedPosition()" class="form-control" />  
                      <ul class="list-group" ng-model="hidethis" ng-hide="hidethis">  
-                          <li class="list-group-item" ng-repeat="person in filterNames | orderBy: 'name' track by $index" ng-click="fillTextbox(person.name)" style="cursor:pointer;" ng-class="{'focus': focusedIndex == $index}" >
+                          <li class="list-group-item" ng-repeat="person in filterNames track by $index" ng-click="fillTextbox(person.name)" style="cursor:pointer;" ng-class="{'focus': focusedIndex == $index}" >
 						  <img src="{{person.avatar_url}}" width="30px;"/>
 						  {{person.name}} <span style="color:lightgrey;">{{person.username}}</span>
 						  </li>
