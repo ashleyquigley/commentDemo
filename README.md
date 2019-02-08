@@ -7,12 +7,11 @@ To RUN
 Install Nodejs and npm
 
 Install http-server
-npm install http-server -g
+(npm install http-server -g)
 
 Run http-server
-http-server
+(http-server)
 
-Open the Project
 Open tech-example.html
 
 
