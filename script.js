@@ -24,17 +24,13 @@ var app = angular.module("myapp",[]);
 		if(string.charCodeAt(i) == $scope.symbol){
 		  $scope.flag = true;
 			$scope.idxStart = i;
-			console.log("Symbol at " + $scope.idxStart); 
 		}else if(string.charAt(i) == '' || string.charAt(i) == ' ' || string.charAt(i) == '\t' || string.charAt(i) == '\n' || string.charAt(i) == '\r'){
-			console.log("blank");
 			$scope.resetBox();
 		}
 		if($scope.flag){
 			$scope.idxEnd = i+1;
 			var word = string.substring($scope.idxStart+1, $scope.idxEnd);
-			console.log(word);
 			$scope.hidethis = false;  
-
 			var output = [];  
 			angular.forEach($scope.names, function(person){  
 				if(person.name.toLowerCase().indexOf(word.toLowerCase()) >= 0 || person.username.toLowerCase().indexOf(word.toLowerCase()) >= 0){  
@@ -53,12 +49,9 @@ var app = angular.module("myapp",[]);
 	
 	
 	$scope.cursorPosition = function(method) {
-		console.log(method+"Cursorposition");
-		console.log($scope.input);
-        if (!$scope.input) return; // No (input) element found
+        if (!$scope.input) return;
         if ('selectionStart' in $scope.input[0]) {
-            // Standard-compliant browsers
-			console.log($scope.input[0].selectionStart);
+            //Chrome, firefox
 			if(method == 'set'){
 				$scope.idxStart = $scope.input[0].selectionStart;
 				$scope.idxEnd = $scope.input[0].selectionStart;
@@ -73,7 +66,6 @@ var app = angular.module("myapp",[]);
             var sel = document.selection.createRange();
             var selLen = document.selection.createRange().text.length;
             sel.moveStart('character', -$scope.input.value.length);
-			console.log(sel.text.length - selLen);
 			if(method == 'set'){
 				$scope.idxStart = sel.text.length - selLen;
 				$scope.idxEnd = sel.text.length - selLen;
@@ -130,7 +122,6 @@ var app = angular.module("myapp",[]);
 			}
 			else if (event.keyCode === 13 && $scope.focusedIndex >= 0) { //enter pressed
 				event.preventDefault();
-				console.log('enter');
 				if ($scope.filterNames.length) {
 					$scope.fillTextbox($scope.filterNames[$scope.focusedIndex].name, true);
 					$scope.cursorPosition('set');
